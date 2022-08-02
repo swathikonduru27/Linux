@@ -1,6 +1,5 @@
 import geni.portal as portal
 import geni.rspec.pg as rspec
-import time
 
 # Create a Request object to start building the RSpec.
 request = portal.context.makeRequestRSpec()
@@ -12,11 +11,8 @@ link = request.LAN("lan")
 for i in range(2):
   if i == 0:
     node = request.XenVM("webserver")
-    
-  else: 
+  else:
     node = request.XenVM("observer")
-  
-  time.sleep(240)
     
   node.routable_control_ip = "true"  
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU20-64-STD"
@@ -27,8 +23,8 @@ for i in range(2):
   
   if i == 0:
     node.addService(rspec.Execute(shell="sh", command="sudo bash /local/repository/setup_apache.sh"))
-  else :
+  else:
     node.addService(rspec.Execute(shell="sh", command="sudo bash /local/repository/observer_setup.sh"))
-    
+
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
