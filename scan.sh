@@ -28,5 +28,5 @@ for ip in $ips; do
 done
 
 for ip in ${!countries[*]}; do
-        echo "${ips_list[$ip]} ${countries[$ip]} ${month_list[$ip]} ${day_list[$ip]}" > /var/webserver_log/unauthorized.log
+        echo "${ips_list[$ip]} ${countries[$ip]} ${month_list[$ip]} ${day_list[$ip]}" >> /var/webserver_log/unauthorized.log
 done
