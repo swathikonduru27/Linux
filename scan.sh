@@ -8,22 +8,20 @@ month_list=()
 day_list=()
 
 for ip in $ip_address; do
-        ips_list+=${ip}
+        ips_list+=($ip)
 done
 
 for date in ${month}; do
-        month_list+=${date}
+        month_list+=($date)
 done
-
 for date in ${day}; do
-        day_list+=${date}
+        day_list+=($date)
 done
 
-#echo "${day_list[*]}"
 countries={}
-for ip in $ips; do
-        country=$(curl ip_addressinfo.io/$ip/country)
-        countries+=${country}
+for ip in ${ip_address}; do
+        country=$(curl ipinfo.io/$ip/country)
+        countries+=($country)
         echo ${country}
 done
 
