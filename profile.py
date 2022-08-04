@@ -1,6 +1,5 @@
 import geni.portal as portal
 import geni.rspec.pg as rspec
-import time
 
 # Create a Request object to start building the RSpec.
 request = portal.context.makeRequestRSpec()
@@ -16,8 +15,6 @@ for i in range(3):
     node = request.XenVM("observer")
   else: 
     node = request.XenVM("ldap")
-  
-  time.sleep(120)
     
   node.routable_control_ip = "true"  
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU20-64-STD"
