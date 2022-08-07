@@ -18,13 +18,13 @@ for date in ${day}; do
         day_list+=($date)
 done
 
-countries={}
+countries=()
 for ip in ${ip_address}; do
         country=$(curl ipinfo.io/$ip/country)
         countries+=($country)
         echo ${country}
 done
 
-for ip in ${!countries[*]}; do
+for ip in ${!countries[@]}; do
         echo "${ips_list[$ip]} ${countries[$ip]} ${month_list[$ip]} ${day_list[$ip]}" >> /var/webserver_log/unauthorized.log
 done
